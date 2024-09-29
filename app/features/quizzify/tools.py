@@ -14,7 +14,8 @@ from langchain_chroma import Chroma
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnablePassthrough, RunnableParallel
 from langchain_core.output_parsers import JsonOutputParser
-from langchain_core.pydantic_v1 import BaseModel, Field
+# from langchain_core.pydantic_v1 import BaseModel, Field
+from pydantic import BaseModel, Field
 from langchain_google_genai import GoogleGenerativeAI
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
@@ -372,22 +373,22 @@ class QuizQuestion(BaseModel):
     answer: str = Field(description="The key of the correct answer from the choices list")
     explanation: str = Field(description="An explanation of why the answer is correct")
 
-    model_config = {
-        "json_schema_extra": {
-            "examples": """ 
-                {
-                "question": "What is the capital of France?",
-                "choices": [
-                    {"key": "A", "value": "Berlin"},
-                    {"key": "B", "value": "Madrid"},
-                    {"key": "C", "value": "Paris"},
-                    {"key": "D", "value": "Rome"}
-                ],
-                "answer": "C",
-                "explanation": "Paris is the capital of France."
-              }
-          """
-        }
+    # model_config = {
+    #     "json_schema_extra": {
+    #         "examples": """ 
+    #             {
+    #             "question": "What is the capital of France?",
+    #             "choices": [
+    #                 {"key": "A", "value": "Berlin"},
+    #                 {"key": "B", "value": "Madrid"},
+    #                 {"key": "C", "value": "Paris"},
+    #                 {"key": "D", "value": "Rome"}
+    #             ],
+    #             "answer": "C",
+    #             "explanation": "Paris is the capital of France."
+    #           }
+    #       """
+    #     }
 
-      }
+    #   }
 
